@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Robot control system</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" media="all" href="../../css/robot.css" th:href="@{/css/robot.css}"/>
+    </head>
+
+    <body>
+
+        <div align="center">
+            <img src="../../images/cat.jpeg" alt="Cat" title="Cat" width="200" height="160"
+                th:src="@{/images/cat.jpeg}" th:alt-title="#{title.application}"/>
+        </div>
+
+        <form  th:action="@{/forward}" method='post'>
+            <div  id = "forward">
+                <button class = "btn" type="submit" name="forward" th:text="#{button.forward}">Forward</button>
+            </div>
+        </form>
+
+        <form  th:action="@{/back}" method='post'>
+            <div  id = "back">
+                <button class = "btn" type="submit" name="back" th:text="#{button.back}">Back</button>
+            </div>
+        </form>
+
+        <form  th:action="@{/left}" method='post'>
+            <div  id = "left">
+                <button class = "btn" type="submit" name="left" th:text="#{button.left}">Back</button>
+            </div>
+        </form>
+
+        <form  th:action="@{/right}" method='post'>
+            <div  id = "right">
+                <button class = "btn" type="submit" name="right" th:text="#{button.right}">Back</button>
+            </div>
+        </form>
+
+    </body>
+
+</html>
