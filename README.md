@@ -16,6 +16,7 @@
 ## Error codes
 
   | vbFL | vbFR | vbBL | vbBR | virFront | virBack |
+  
   |   x  |   x  |   x  |   x  |    x     |    x    |   
   
   vbFL =     100000 = 32
