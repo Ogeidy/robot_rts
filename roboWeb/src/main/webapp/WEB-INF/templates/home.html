@@ -10,8 +10,8 @@
 
     <body>
 
-        <div align="center">
-            <img src="../../images/cat.jpeg" alt="Cat" title="Cat" width="200" height="160"
+        <div align="right">
+            <img src="../../images/cat.jpeg" alt="Cat" title="Cat" width="400" height="320"
                 th:src="@{/images/cat.jpeg}" th:alt-title="#{title.application}"/>
         </div>
 
@@ -36,6 +36,12 @@
         <form  th:action="@{/right}" method='post'>
             <div  id = "right">
                 <button class = "btn" type="submit" name="right" th:text="#{button.right}">Back</button>
+            </div>
+        </form>
+
+        <form  th:action="@{/stop}" method='post'>
+            <div  id = "stop">
+                <button class = "btn" type="submit" name="stop" th:text="#{button.stop}">Back</button>
             </div>
         </form>
 

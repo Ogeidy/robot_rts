@@ -18,7 +18,6 @@ public class RobotController {
 
     @RequestMapping(value="/forward", method = RequestMethod.POST)
     public String forward() {
-    	SerialPortManager.send();
         LOGGER.info("Forward button was clicked");
         return "redirect:/home";
     }
@@ -38,6 +37,12 @@ public class RobotController {
     @RequestMapping(value="/right", method = RequestMethod.POST)
     public String right() {
         LOGGER.info("Right button was clicked");
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value="/stop", method = RequestMethod.POST)
+    public String stop() {
+        LOGGER.info("Stop button was clicked");
         return "redirect:/home";
     }
 }
