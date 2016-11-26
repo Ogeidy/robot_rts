@@ -15,15 +15,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
         <springframework.version>4.3.3.RELEASE</springframework.version>
+        <java.library.path>/usr/lib/jni</java.library.path>
     </properties>
   
-    <repositories>
-        <repository>
-          <id>repo1</id>
-          <name>repo.javax.comm</name>
-          <url>http://central.maven.org/maven2</url>
-        </repository>
-      </repositories>
 
     <build>
 
@@ -48,8 +42,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
       
@@ -152,6 +146,12 @@
             <scope>compile</scope>
         </dependency>
         
+	<dependency>
+            <groupId>custom.repo</groupId>
+            <artifactId>serialport</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -159,11 +159,6 @@
             <scope>compile</scope>
         </dependency>
         
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator-annotation-processor</artifactId>
-            <version>4.1.0.Final</version>
-        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -179,11 +174,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.scream3r</groupId>
-            <artifactId>jssc</artifactId>
-            <version>2.8.0</version>
-        </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
@@ -205,7 +195,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
     </dependencies>
   
 </project>

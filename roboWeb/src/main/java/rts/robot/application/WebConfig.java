@@ -14,6 +14,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import rts.robot.web.controller.SerialPortManager;
 
 @Configuration
 @EnableWebMvc
@@ -67,5 +68,16 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
+    }
+
+    @Bean
+    public SerialPortManager serialPortManager(){
+        SerialPortManager serialPortManager = new SerialPortManager();
+        try {
+            serialPortManager.connect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return serialPortManager;
     }
 }

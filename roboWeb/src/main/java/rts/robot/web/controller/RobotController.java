@@ -1,5 +1,6 @@
 package rts.robot.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import rts.robot.web.controller.SerialPortManager;
 
 import org.apache.log4j.Logger;
@@ -7,8 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.IOException;
+
 @Controller
 public class RobotController {
+    @Autowired
+    private SerialPortManager serialPortManager;
+
     Logger LOGGER = Logger.getLogger(RobotController.class);
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
@@ -19,6 +25,11 @@ public class RobotController {
     @RequestMapping(value="/forward", method = RequestMethod.POST)
     public String forward() {
         LOGGER.info("Forward button was clicked");
+        try {
+            serialPortManager.write(0x1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/home";
     }
 
