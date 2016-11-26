@@ -37,6 +37,10 @@ public class SerialPortManager {
                     SerialPort.PARITY_NONE
                 );
             LOGGER.info("commPort, set properties: ...");
+            Thread.sleep(10000);
+            InputStream in = serialPort.getInputStream();
+            (new Thread(new SerialReader(in))).start();
+            LOGGER.info("commPort, set properties: ...");
             } else {
                 LOGGER.error("Error: It's not serial port");
             }
@@ -51,12 +55,26 @@ public class SerialPortManager {
         out.close();
     }
 
-    public void read() throws IOException {
-        byte[] buffer = new byte[1024];
-        int len = -1;
-        InputStream in = serialPort.getInputStream();
-        LOGGER.info("Before reading");
-        len = in.read(buffer);
-        LOGGER.info("Reading: " + new String( buffer, 0, len ));
+    public class SerialReader implements Runnable {
+        private InputStream in;
+     
+        public SerialReader(InputStream in) {
+            this.in = in;
+        }
+     
+        public void run() {
+            byte[] buffer = new byte[1];
+            int len = -1;
+            try {
+                while(true) {
+                    len = this.in.read(buffer);
+                    if (len == 1) {
+                        LOGGER.info(new String(buffer, 0, len));
+                    }
+                }
+            } catch( IOException e ) {
+                e.printStackTrace();
+            }
+        }
     }
 }
