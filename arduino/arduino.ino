@@ -94,7 +94,7 @@ void readCom()
   
   if (Serial.available()) 
   {
-    input = Serial.read() - 48;
+    input = Serial.read();// - 48;
   }
 
   Serial.print("Input: ");
