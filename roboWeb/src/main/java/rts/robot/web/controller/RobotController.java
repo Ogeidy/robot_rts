@@ -1,6 +1,8 @@
 package rts.robot.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ResponseBody;
+import rts.robot.dto.SignalsDTO;
 import rts.robot.web.controller.SerialPortManager;
 
 import org.apache.log4j.Logger;
@@ -79,6 +81,12 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value="/signals", method = RequestMethod.GET)
+    public @ResponseBody SignalsDTO signals() {
+
         return "redirect:/home";
     }
 }
