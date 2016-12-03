@@ -8,8 +8,13 @@ public class SignalsDTO {
 	private boolean bckRight;
 	private boolean bck;
 
-	public SignalsDTO(byte signals) {
-		update(signals);
+	public SignalsDTO() {
+		fwdLeft = false;
+		fwdRight = false;
+		fwd = false;
+		bckLeft = false;
+		bckRight = false;
+		bck = false;
 	}
 
 	public SignalsDTO update(byte signals) {
