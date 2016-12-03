@@ -7,7 +7,7 @@ $(function(){
             url : '/home',
             type : 'GET',
             cache : false,
-            headers : { 'X-Ajax-call' : 'true'}
+            headers : { 'X-Ajax-call' : 'true'},
             success : function() {
                 console.log('bck: ', CURRENT_SIGNALS.bck);
                 console.log('bckRight: ', CURRENT_SIGNALS.bckRight);

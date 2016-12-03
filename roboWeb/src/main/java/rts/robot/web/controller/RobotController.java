@@ -34,7 +34,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "home";
+        return "redirect:/home";
     }
 
     @RequestMapping(value="/back", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "home";
+        return "redirect:/home";
     }
 
     @RequestMapping(value="/left", method = RequestMethod.POST)
@@ -58,7 +58,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "home";
+        return "redirect:/home";
     }
 
     @RequestMapping(value="/right", method = RequestMethod.POST)
@@ -70,7 +70,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "home";
+        return "redirect:/home";
     }
 
     @RequestMapping(value="/stop", method = RequestMethod.POST)
@@ -82,7 +82,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "home";
+        return "redirect:/home";
     }
 
     @RequestMapping(value="/signals", method = RequestMethod.GET)
