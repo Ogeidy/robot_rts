@@ -14,6 +14,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import rts.robot.dto.SignalsDTO;
 import rts.robot.web.controller.SerialPortManager;
 
 @Configuration
@@ -68,6 +69,13 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
+    }
+
+    @Bean
+    public SignalsDTO signalsDTO() {
+        byte c = 0;
+        SignalsDTO signalsDTO = new SignalsDTO(c);
+        return signalsDTO;
     }
 
     @Bean

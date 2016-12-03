@@ -1,14 +1,13 @@
 package rts.robot.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ResponseBody;
-import rts.robot.dto.SignalsDTO;
-import rts.robot.web.controller.SerialPortManager;
+import org.springframework.ui.Model;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rts.robot.dto.SignalsDTO;
 
 import java.io.IOException;
 
@@ -16,6 +15,8 @@ import java.io.IOException;
 public class RobotController {
     @Autowired
     private SerialPortManager serialPortManager;
+    @Autowired
+    private SignalsDTO signalsDTO;
 
     Logger LOGGER = Logger.getLogger(RobotController.class);
 
@@ -33,7 +34,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/home";
+        return "home";
     }
 
     @RequestMapping(value="/back", method = RequestMethod.POST)
@@ -45,7 +46,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/home";
+        return "home";
     }
 
     @RequestMapping(value="/left", method = RequestMethod.POST)
@@ -57,7 +58,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/home";
+        return "home";
     }
 
     @RequestMapping(value="/right", method = RequestMethod.POST)
@@ -69,7 +70,7 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/home";
+        return "home";
     }
 
     @RequestMapping(value="/stop", method = RequestMethod.POST)
@@ -81,12 +82,12 @@ public class RobotController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/home";
+        return "home";
     }
 
     @RequestMapping(value="/signals", method = RequestMethod.GET)
-    public @ResponseBody SignalsDTO signals() {
-
-        return "redirect:/home";
+    public String signals(Model model) {
+        model.addAttribute("currentSignals", signalsDTO);
+        return "home";
     }
 }

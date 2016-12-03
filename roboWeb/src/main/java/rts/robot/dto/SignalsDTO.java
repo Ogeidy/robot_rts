@@ -1,50 +1,55 @@
 package rts.robot.dto;
 
 public class SignalsDTO {
-	private final boolean fwdLeft;
-	private final boolean fwdRight;
-	private final boolean fwd;
-	private final boolean bckLeft;
-	private final boolean bckRight;
-	private final boolean bck;
+	private boolean fwdLeft;
+	private boolean fwdRight;
+	private boolean fwd;
+	private boolean bckLeft;
+	private boolean bckRight;
+	private boolean bck;
 
-	public SignalsDTO(byte signal) {
+	public SignalsDTO(byte signals) {
+		update(signals);
+	}
+
+	public SignalsDTO update(byte signals) {
 		byte check = 1;
-		if ((signal & check) == check) {
+		if ((signals & check) == check) {
 			bck = true;
 		} else {
 			bck = false;
 		}
 		check = 2;
-		if ((signal & check) == check) {
+		if ((signals & check) == check) {
 			fwd = true;
 		} else {
 			fwd = false;
 		}
 		check = 4;
-		if ((signal & check) == check) {
+		if ((signals & check) == check) {
 			bckRight = true;
 		} else {
 			bckRight = false;
 		}
 		check = 8;
-		if ((signal & check) == check) {
+		if ((signals & check) == check) {
 			bckLeft = true;
 		} else {
 			bckLeft = false;
 		}
 		check = 16;
-		if ((signal & check) == check) {
+		if ((signals & check) == check) {
 			fwdRight = true;
 		} else {
 			fwdRight = false;
 		}
 		check = 32;
-		if ((signal & check) == check) {
+		if ((signals & check) == check) {
 			fwdLeft = true;
 		} else {
 			fwdLeft = false;
 		}
+		return this;
 	}
 
 	public boolean isFwdLeft() {

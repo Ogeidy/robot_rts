@@ -6,6 +6,10 @@
         <title>Robot control system</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" media="all" href="../../css/robot.css" th:href="@{/css/robot.css}"/>
+        <script th:inline="javascript">
+            var CURRENT_SIGNALS = [[${session.currentSignals}]];
+        </script>
+        <script th:src="@{/js/updateSignals.js}"></script>
     </head>
 
     <body>

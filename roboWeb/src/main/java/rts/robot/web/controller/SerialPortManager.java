@@ -5,13 +5,24 @@ import org.apache.log4j.Logger;
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import rts.robot.dto.SignalsDTO;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+@Component
 public class SerialPortManager {
+    private SignalsDTO signalsDTO;
+
+    @Autowired
+    public SerialPortManager(SignalsDTO signalsDTO){
+        this.signalsDTO = signalsDTO;
+    }
+
     Logger LOGGER = Logger.getLogger(SerialPortManager.class);
     private String portName = "/dev/ttyACM0";
     private SerialPort serialPort;
@@ -70,6 +81,7 @@ public class SerialPortManager {
                     len = this.in.read(buffer);
                     if (len == 1) {
                         LOGGER.info(new String(buffer, 0, len));
+                        signalsDTO.update(buffer[0]);
                     }
                 }
             } catch( IOException e ) {
