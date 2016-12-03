@@ -73,14 +73,13 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
     @Bean
     public SignalsDTO signalsDTO() {
-        byte c = 0;
-        SignalsDTO signalsDTO = new SignalsDTO(c);
+        SignalsDTO signalsDTO = new SignalsDTO();
         return signalsDTO;
     }
 
     @Bean
-    public SerialPortManager serialPortManager(){
-        SerialPortManager serialPortManager = new SerialPortManager();
+    public SerialPortManager serialPortManager(SignalsDTO signalsDTO){
+        SerialPortManager serialPortManager = new SerialPortManager(signalsDTO);
         try {
             serialPortManager.connect();
         } catch (Exception e) {
