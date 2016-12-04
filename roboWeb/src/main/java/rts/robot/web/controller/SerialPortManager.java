@@ -82,13 +82,13 @@ public class SerialPortManager {
                 while(true) {
                     len = this.in.read(buffer);
                     if (len == 1) {
-                        LOGGER.info(new String(buffer, 0, len));
+                        //LOGGER.info(new String(buffer, 0, len));
                         signalsDTO.update(buffer[0]);
-                        try {
+                        /*try {
                             sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
-                        }
+                        }*/
                     }
                 }
             } catch( IOException e ) {
