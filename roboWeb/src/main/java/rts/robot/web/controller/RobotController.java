@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rts.robot.dto.SignalsDTO;
@@ -86,8 +87,14 @@ public class RobotController {
     }
 
     @RequestMapping(value="/signals", method = RequestMethod.GET)
-    public String signals(HttpSession session) {
-        session.setAttribute("currentSignals", signalsDTO);
+    public String signals(Model model) {
+        LOGGER.info("bck:" + signalsDTO.isBck());
+        LOGGER.info("fwd:" + signalsDTO.isFwd());
+        LOGGER.info("bckRight:" + signalsDTO.isBckRight());
+        LOGGER.info("bckLeft:" + signalsDTO.isBckLeft());
+        LOGGER.info("fwdRight:" + signalsDTO.isFwdRight());
+        LOGGER.info("fwdLeft:" + signalsDTO.isFwdLeft());
+        model.addAttribute("currentSignals", signalsDTO);
         return "home";
     }
 }

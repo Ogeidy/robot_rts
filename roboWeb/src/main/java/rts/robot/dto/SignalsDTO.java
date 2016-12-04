@@ -1,6 +1,11 @@
 package rts.robot.dto;
 
+
+import org.apache.log4j.Logger;
+
 public class SignalsDTO {
+	Logger LOGGER = Logger.getLogger(SignalsDTO.class);
+
 	private boolean fwdLeft;
 	private boolean fwdRight;
 	private boolean fwd;
@@ -54,6 +59,12 @@ public class SignalsDTO {
 		} else {
 			fwdLeft = false;
 		}
+		LOGGER.info("bck:" + bck);
+		LOGGER.info("fwd:" + fwd);
+		LOGGER.info("bckRight:" + bckRight);
+		LOGGER.info("bckLeft:" + bckLeft);
+		LOGGER.info("fwdRight:" + fwdRight);
+		LOGGER.info("fwdLeft:" + fwdLeft);
 		return this;
 	}
 
