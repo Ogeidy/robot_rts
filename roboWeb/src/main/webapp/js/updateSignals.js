@@ -8,14 +8,14 @@ $(function(){
             type : 'GET',
             cache : false,
             headers : { 'X-Ajax-call' : 'true'},
-            success : function() {
-                var modelAttr = $("#modelAttr").val();
-                console.log('bck: ', modelAttr.bck);
-                console.log('bckRight: ', modelAttr.bckRight);
-                console.log('bckLeft: ', modelAttr.bckLeft);
-                console.log('fwd: ', modelAttr.fwd);
-                console.log('fwdRight: ', modelAttr.fwdRight);
-                console.log('fwdLeft: ', modelAttr.fwdLeft);
+            dataType: json,
+            success : function(data) {
+                console.log('bck: ', data.bck);
+                console.log('bckRight: ', data.bckRight);
+                console.log('bckLeft: ', data.bckLeft);
+                console.log('fwd: ', data.fwd);
+                console.log('fwdRight: ', data.fwdRight);
+                console.log('fwdLeft: ', data.fwdLeft);
             },
             error : function() {
                 console.log('Error while calling ajax');

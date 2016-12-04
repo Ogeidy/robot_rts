@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import rts.robot.dto.SignalsDTO;
 
 import javax.servlet.http.HttpSession;
@@ -86,9 +87,9 @@ public class RobotController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value="/signals", method = RequestMethod.GET)
+    @RequestMapping(value="/signals", method = RequestMethod.GET, produces="application/json")
     //public String signals(Model model) {
-    public String signals(Model model) {
+    public @ResponseBody SignalsDTO signals() {
         /*LOGGER.info("bck:" + signalsDTO.isBck());
         LOGGER.info("fwd:" + signalsDTO.isFwd());
         LOGGER.info("bckRight:" + signalsDTO.isBckRight());
@@ -97,8 +98,8 @@ public class RobotController {
         LOGGER.info("fwdLeft:" + signalsDTO.isFwdLeft());
         */
         //model.addAttribute("currentSignals", signalsDTO);
-        model.addAttribute("currentSignals", signalsDTO);
+        //model.addAttribute("currentSignals", signalsDTO);
         //session.setAttribute("currentSignals", signalsDTO);
-        return "home";
+        return signalsDTO;
     }
 }
