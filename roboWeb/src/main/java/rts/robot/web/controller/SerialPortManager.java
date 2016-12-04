@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static java.lang.Thread.sleep;
+
 @Component
 public class SerialPortManager {
     private SignalsDTO signalsDTO;
@@ -48,7 +50,7 @@ public class SerialPortManager {
                     SerialPort.PARITY_NONE
                 );
             LOGGER.info("commPort, set properties: ...");
-            Thread.sleep(10000);
+            sleep(10000);
             InputStream in = serialPort.getInputStream();
             (new Thread(new SerialReader(in))).start();
             LOGGER.info("commPort, set properties: ...");
@@ -82,6 +84,11 @@ public class SerialPortManager {
                     if (len == 1) {
                         LOGGER.info(new String(buffer, 0, len));
                         signalsDTO.update(buffer[0]);
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             } catch( IOException e ) {
