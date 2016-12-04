@@ -97,8 +97,8 @@ void readCom()
     input = Serial.read();// - 48;
   }
 
-  Serial.print("Input: ");
-  Serial.println(input);
+  //Serial.print("Input: ");
+  //Serial.println(input);
 
   switch (input) {
     case 1:
