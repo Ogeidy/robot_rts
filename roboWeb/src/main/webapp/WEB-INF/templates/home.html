@@ -16,7 +16,7 @@
     -->
         <script th:inline="javascript">
             /*<![CDATA[*/
-                var CURRENT_SIGNALS = /*[[${currentSignals}]]*/'';
+            var CURRENT_SIGNALS = [[${session.currentSignals}]];
             /*]]>*/
         </script>
         <!--<script th:replace="include :: script.jquery-with-plugins"></script>-->

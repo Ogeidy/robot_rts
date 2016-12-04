@@ -87,14 +87,17 @@ public class RobotController {
     }
 
     @RequestMapping(value="/signals", method = RequestMethod.GET)
-    public String signals(Model model) {
+    //public String signals(Model model) {
+    public String signals(HttpSession session) {
         /*LOGGER.info("bck:" + signalsDTO.isBck());
         LOGGER.info("fwd:" + signalsDTO.isFwd());
         LOGGER.info("bckRight:" + signalsDTO.isBckRight());
         LOGGER.info("bckLeft:" + signalsDTO.isBckLeft());
         LOGGER.info("fwdRight:" + signalsDTO.isFwdRight());
         LOGGER.info("fwdLeft:" + signalsDTO.isFwdLeft());
-        */model.addAttribute("currentSignals", signalsDTO);
+        */
+        //model.addAttribute("currentSignals", signalsDTO);
+        session.setAttribute("currentSignals", signalsDTO);
         return "home";
     }
 }
