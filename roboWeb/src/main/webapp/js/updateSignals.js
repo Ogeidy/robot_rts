@@ -8,7 +8,7 @@ $(function(){
             type : 'GET',
             cache : false,
             headers : { 'X-Ajax-call' : 'true'},
-            dataType: json,
+            dataType: 'json',
             success : function(data) {
                 console.log('bck: ', data.bck);
                 console.log('bckRight: ', data.bckRight);
