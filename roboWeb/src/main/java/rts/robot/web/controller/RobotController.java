@@ -1,7 +1,6 @@
 package rts.robot.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rts.robot.dto.SignalsDTO;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -86,8 +86,8 @@ public class RobotController {
     }
 
     @RequestMapping(value="/signals", method = RequestMethod.GET)
-    public String signals(Model model) {
-        model.addAttribute("currentSignals", signalsDTO);
+    public String signals(HttpSession session) {
+        session.setAttribute("currentSignals", signalsDTO);
         return "home";
     }
 }

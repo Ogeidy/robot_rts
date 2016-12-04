@@ -4,7 +4,7 @@ $(function(){
 
     setInterval(function() {
         $.ajax({
-            url : '/home',
+            url : '/robot/signals',
             type : 'GET',
             cache : false,
             headers : { 'X-Ajax-call' : 'true'},
