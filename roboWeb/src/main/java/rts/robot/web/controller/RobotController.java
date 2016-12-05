@@ -27,7 +27,7 @@ public class RobotController {
         return "home";
     }
 
-    @RequestMapping(value="/forward", method = RequestMethod.POST)
+    @RequestMapping(value="/forward", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
     public String forward() {
         LOGGER.info("Forward button was clicked");
         try {
@@ -39,7 +39,7 @@ public class RobotController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value="/back", method = RequestMethod.POST)
+    @RequestMapping(value="/back", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
     public String back() {
         LOGGER.info("Back button was clicked");
         try {
@@ -51,7 +51,7 @@ public class RobotController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value="/left", method = RequestMethod.POST)
+    @RequestMapping(value="/left", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
     public String left() {
         LOGGER.info("Left button was clicked");
         try {
@@ -63,7 +63,7 @@ public class RobotController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value="/right", method = RequestMethod.POST)
+    @RequestMapping(value="/right", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
     public String right() {
         LOGGER.info("Right button was clicked");
         try {
@@ -75,7 +75,7 @@ public class RobotController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value="/stop", method = RequestMethod.POST)
+    @RequestMapping(value="/stop", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
     public String stop() {
         LOGGER.info("Stop button was clicked");
         try {
