@@ -21,25 +21,37 @@ $(function(){
             headers : { 'X-Ajax-call' : 'true'},
             dataType: 'json',
             success : function(data) {
-                if (data.bck == true) {
-
-                }
-                if (data.bckRight == true) {
-
-                }
-                if (data.bckLeft == true) {
-
-                }
-                if (data.fwd == true) {
-
-                }
                 if (data.fwdRight == true) {
-
+                    bumperSelector = '.bumper-rf';
+                    bumperCollision(bumperSelector)
+                }
+                if (data.fwdRight == false) {
+                    bumperSelector = '.bumper-rf';
+                    bumperNoCollision(bumperSelector)
                 }
                 if (data.fwdLeft == true) {
-                    console.log(data.fwdLeft)
                     bumperSelector = '.bumper-lf';
                     bumperCollision(bumperSelector)
+                }
+                if (data.fwdLeft == false) {
+                    bumperSelector = '.bumper-lf';
+                    bumperNoCollision(bumperSelector)
+                }
+                if (data.bckRight == true) {
+                    bumperSelector = '.bumper-rb';
+                    bumperCollision(bumperSelector)
+                }
+                if (data.bckRight == false) {
+                    bumperSelector = '.bumper-rb';
+                    bumperNoCollision(bumperSelector)
+                }
+                if (data.bckLeft == true) {
+                    bumperSelector = '.bumper-lb';
+                    bumperCollision(bumperSelector)
+                }
+                if (data.bckLeft == false) {
+                    bumperSelector = '.bumper-lb';
+                    bumperNoCollision(bumperSelector)
                 }
             },
             error : function() {
