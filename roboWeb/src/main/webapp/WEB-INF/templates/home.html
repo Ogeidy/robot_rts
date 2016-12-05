@@ -2,67 +2,94 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <title>Robot control system</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" media="all" href="../../css/robot.css" th:href="@{/css/robot.css}"/>
-        <script th:src="@{/js/jquery_2_2_5.js}" type="text/javascript"></script>
-        <!--<script
-          src="https://code.jquery.com/jquery-2.2.4.min.js"
-          integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-          crossorigin="anonymous"></script>
-          var CURRENT_SIGNALS = [[${session.currentSignals}]];
-          var CURRENT_SIGNALS = /*[[${currentSignals}]]*/'';
-    -->
-        <script th:inline="javascript">
-            /*<![CDATA[*/
-            var CURRENT_SIGNALS = /*[[${currentSignals}]]*/'List of LocationForm elements';
-            /*]]>*/
-        </script>
-        <!--<script th:replace="include :: script.jquery-with-plugins"></script>-->
-        <script th:src="@{/js/updateSignals.js}"></script>
-    </head>
+<head>
+    <title>Robot control system</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/robot.css" th:href="@{/css/robot.css}"/>
+    <script th:src="@{/js/jquery_2_2_5.js}" type="text/javascript"></script>
+    <script th:src="@{/js/updateSignals.js}"></script>
+</head>
 
-    <body>
-        <div>
-            <input type="hidden" id="modelAttr" name="modelAttr" value="${currentSignals}"/>
+<body>
+<div class="main-wrapper">
+    <div class="header">
+        <div class="header-item logo"><img src="../../images/polytech_logo.svg" alt=""></div>
+        <div class="header-item title"><span>Курсовая работа по курсу "Системы реального времени"</span></div>
+        <div class="header-item students">
+            <div class="students-names">
+                <div>Боднар Ирина Михайловна</div>
+                <div>Мамонтов Яков Сергеевич</div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="controls">
+            <form id="forward" th:action="@{/forward}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="forward" th:text="#{button.forward}">&#9650;</button>
+                </div>
+            </form>
+            <form id="stop" th:action="@{/stop}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="stop" th:text="#{button.stop}">Stop</button>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+
+            <form id="back" th:action="@{/back}" method='post'>
+                <div >
+                    <button class = "btn" type="submit" name="back" th:text="#{button.back}">&#9660;</button>
+                </div>
+            </form>
+
+            <form id="left" th:action="@{/left}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="left" th:text="#{button.left}">&#9668;</button>
+                </div>
+            </form>
+
+            <form id="right" th:action="@{/right}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="right" th:text="#{button.right}">&#9658;</button>
+                </div>
+            </form>
+
+
         </div>
 
-        <div align="right">
-            <img src="../../images/cat.jpeg" alt="Cat" title="Cat" width="400" height="320"
-                th:src="@{/images/cat.jpeg}" th:alt-title="#{title.application}"/>
+        <div class="robot">
+
+            <div class="robot-chassis">
+                <img src="../../images/robo_body.png" alt="cat1" title="robot"
+                     th:src="@{/images/robo_body.png}" th:alt-title="#{title.application}"/>
+
+                <div class="collision-indicator bumper-rf bumper-no-collision"></div>
+                <div class="collision-indicator bumper-rb bumper-no-collision"></div>
+                <div class="collision-indicator bumper-lf bumper-no-collision"></div>
+                <div class="collision-indicator bumper-lb bumper-no-collision"></div>
+
+                <div class="collision-indicator iri-forward iri-no-collision">
+                    <img class="visible iri-no-collision" src="../../images/robo_ir_front_0.png" alt="cat1" title="robot"
+                         th:src="@{/images/robo_ir_front_0.png}" th:alt-title="#{title.application}"/>
+                    <img class="invisible  iri-collision" src="../../images/robo_ir_front_1.png" alt="cat1" title="robot"
+                         th:src="@{/images/robo_ir_front_1.png}" th:alt-title="#{title.application}"/>
+                </div>
+                <div class="collision-indicator iri-back iri-no-collision">
+                    <img class="visible iri-no-collision" src="../../images/robo_ir_back_0.png" alt="cat1" title="robot"
+                         th:src="@{/images/robo_ir_back_0.png}" th:alt-title="#{title.application}"/>
+                    <img class="invisible iri-collision" src="../../images/robo_ir_back_1.png" alt="cat1" title="robot"
+                         th:src="@{/images/robo_ir_back_1.png}" th:alt-title="#{title.application}"/>
+                </div>
+            </div>
         </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="footer">
 
-        <form  th:action="@{/forward}" method='post'>
-            <div  id = "forward">
-                <button class = "btn" type="submit" name="forward" th:text="#{button.forward}">Forward</button>
-            </div>
-        </form>
-
-        <form  th:action="@{/back}" method='post'>
-            <div  id = "back">
-                <button class = "btn" type="submit" name="back" th:text="#{button.back}">Back</button>
-            </div>
-        </form>
-
-        <form  th:action="@{/left}" method='post'>
-            <div  id = "left">
-                <button class = "btn" type="submit" name="left" th:text="#{button.left}">Back</button>
-            </div>
-        </form>
-
-        <form  th:action="@{/right}" method='post'>
-            <div  id = "right">
-                <button class = "btn" type="submit" name="right" th:text="#{button.right}">Back</button>
-            </div>
-        </form>
-
-        <form  th:action="@{/stop}" method='post'>
-            <div  id = "stop">
-                <button class = "btn" type="submit" name="stop" th:text="#{button.stop}">Back</button>
-            </div>
-        </form>
-
-    </body>
+    </div>
+</div>
+</body>
 
 </html>

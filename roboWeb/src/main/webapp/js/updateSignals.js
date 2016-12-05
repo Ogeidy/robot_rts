@@ -2,7 +2,18 @@
 
 $(function(){
 
+    function bumperCollision(bumperSelector) {
+        $(bumperSelector).removeClass('bumper-no-collision');
+        $(bumperSelector).addClass('bumper-collision');
+    }
+
+    function bumperNoCollision(bumperSelector) {
+        $(bumperSelector).removeClass('bumper-collision');
+        $(bumperSelector).addClass('bumper-no-collision');
+    }
+
     setInterval(function() {
+        var bumperSelector = '';
         $.ajax({
             url : '/robot/signals',
             type : 'GET',
@@ -10,12 +21,26 @@ $(function(){
             headers : { 'X-Ajax-call' : 'true'},
             dataType: 'json',
             success : function(data) {
-                console.log('bck: ', data.bck);
-                console.log('bckRight: ', data.bckRight);
-                console.log('bckLeft: ', data.bckLeft);
-                console.log('fwd: ', data.fwd);
-                console.log('fwdRight: ', data.fwdRight);
-                console.log('fwdLeft: ', data.fwdLeft);
+                if (data.bck == true) {
+
+                }
+                if (data.bckRight == true) {
+
+                }
+                if (data.bckLeft == true) {
+
+                }
+                if (data.fwd == true) {
+
+                }
+                if (data.fwdRight == true) {
+
+                }
+                if (data.fwdLeft == true) {
+                    console.log(data.fwdLeft)
+                    bumperSelector = '.bumper-lf';
+                    bumperCollision(bumperSelector)
+                }
             },
             error : function() {
                 console.log('Error while calling ajax');
