@@ -39,7 +39,7 @@ void setup()
 
 void readSensors()
 {
-  int sensorsValue = 0;
+  byte sensorsValue = 0;
   
   vbFL = digitalRead(bFL);
   vbFR = digitalRead(bFR);
@@ -61,9 +61,9 @@ void readSensors()
   virBack =  000001 = 1
 **/
 
-  sensorsValue = (int)vbFL*32 + (int)vbFR*16 + (int)vbBL*8 + (int)vbBR*4 + checkFront()*2 + checkBack();
+  sensorsValue = (byte)vbFL*32 + (byte)vbFR*16 + (byte)vbBL*8 + (byte)vbBR*4 + (byte)checkFront()*2 + (byte)checkBack();
   
-  Serial.print(sensorsValue);
+  Serial.write(sensorsValue);
   
 /*     
   virMR = analogRead(irMR);
@@ -286,7 +286,7 @@ void loop()
 {
   readSensors();
   readCom();
-  delay(1000);
+  //delay(1000);
 
 
   /*
