@@ -96,10 +96,10 @@ $(function(){
                 }
             },
             error : function() {
-                console.log('Error while calling ajax');
+                //console.log('Error while calling ajax');
             }
         });
         },
-        1000
+        500
     )
 });

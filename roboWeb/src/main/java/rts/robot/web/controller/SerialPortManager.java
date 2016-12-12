@@ -83,7 +83,7 @@ public class SerialPortManager {
                         //LOGGER.info(new String(buffer, 0, len));
                         signalsDTO.update(buffer[0]);
                         try {
-                            sleep(1000);
+                            sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
