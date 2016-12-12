@@ -2,40 +2,6 @@
 
 $(function(){
 
-    document.getElementById('forward').onclick = function() {
-         $.ajax({
-            url : '/robot/forward',
-            type : 'POST'
-         });
-    }
-
-    document.getElementById('back').onclick = function() {
-         $.ajax({
-            url : '/robot/back',
-            type : 'POST'
-         });
-    }
-
-    document.getElementById('stop').onclick = function() {
-         $.ajax({
-            url : '/robot/stop',
-            type : 'POST'
-         });
-    }
-
-    document.getElementById('left').onclick = function() {
-         $.ajax({
-            url : '/robot/left',
-            type : 'POST'
-         });
-    }
-
-    document.getElementById('right').onclick = function() {
-         $.ajax({
-            url : '/robot/right',
-            type : 'POST'
-         });
-    }
     function bumperCollision(bumperSelector) {
         $(bumperSelector).removeClass('bumper-no-collision');
         $(bumperSelector).addClass('bumper-collision');

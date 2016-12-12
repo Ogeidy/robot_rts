@@ -27,26 +27,35 @@
     </div>
     <div class="content">
         <div class="controls">
-            <div>
-                <button id="forward" class = "btn" type="submit" name="forward">&#9650;</button>
-            </div>
-
-            <div>
-                <button id="stop" class = "btn" type="submit" name="stop"></button>
-            </div>
+            <form id="forward" th:action="@{/forward}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="forward">&#9650;</button>
+                </div>
+            </form>
+            <form id="stop" th:action="@{/stop}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="stop"></button>
+                </div>
+            </form>
             <div class="clearfix"></div>
 
-            <div >
-                <button id="back" class = "btn" type="submit" name="back">&#9660;</button>
-            </div>
+            <form id="back" th:action="@{/back}" method='post'>
+                <div >
+                    <button class = "btn" type="submit" name="back">&#9660;</button>
+                </div>
+            </form>
 
-            <div>
-                <button id="left" class = "btn" type="submit" name="left">&#9668;</button>
-            </div>
+            <form id="left" th:action="@{/left}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="left">&#9668;</button>
+                </div>
+            </form>
 
-            <div>
-                <button id="right" class = "btn" type="submit" name="right">&#9658;</button>
-            </div>
+            <form id="right" th:action="@{/right}" method='post'>
+                <div>
+                    <button class = "btn" type="submit" name="right">&#9658;</button>
+                </div>
+            </form>
 
 
         </div>

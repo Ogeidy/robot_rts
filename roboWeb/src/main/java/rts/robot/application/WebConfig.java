@@ -44,7 +44,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
-/*
+
     @Bean
     public LocaleResolver localeResolver(){
         CookieLocaleResolver resolver = new CookieLocaleResolver();
@@ -68,7 +68,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-*/
+
     @Bean
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
