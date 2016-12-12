@@ -82,11 +82,11 @@ public class SerialPortManager {
                     if (len == 1) {
                         //LOGGER.info(new String(buffer, 0, len));
                         signalsDTO.update(buffer[0]);
-                        try {
+                        /*try {
                             sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
-                        }
+                        }*/
                     }
                 }
             } catch( IOException e ) {
