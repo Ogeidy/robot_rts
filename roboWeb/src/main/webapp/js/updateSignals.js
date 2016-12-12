@@ -53,6 +53,10 @@ $(function(){
                 if (data.fwdRight == true) {
                     bumperSelector = '.bumper-rf';
                     bumperCollision(bumperSelector)
+                    $.ajax({
+                                url : '/robot/stop',
+                                type : 'POST'
+                                });
                 }
                 if (data.fwdRight == false) {
                     bumperSelector = '.bumper-rf';
@@ -61,6 +65,10 @@ $(function(){
                 if (data.fwdLeft == true) {
                     bumperSelector = '.bumper-lf';
                     bumperCollision(bumperSelector)
+                    $.ajax({
+                                url : '/robot/stop',
+                                type : 'POST'
+                                });
                 }
                 if (data.fwdLeft == false) {
                     bumperSelector = '.bumper-lf';
@@ -69,6 +77,10 @@ $(function(){
                 if (data.bckRight == true) {
                     bumperSelector = '.bumper-rb';
                     bumperCollision(bumperSelector)
+                    $.ajax({
+                                url : '/robot/stop',
+                                type : 'POST'
+                                });
                 }
                 if (data.bckRight == false) {
                     bumperSelector = '.bumper-rb';
@@ -77,6 +89,10 @@ $(function(){
                 if (data.bckLeft == true) {
                     bumperSelector = '.bumper-lb';
                     bumperCollision(bumperSelector)
+                    $.ajax({
+                                url : '/robot/stop',
+                                type : 'POST'
+                                });
                 }
                 if (data.bckLeft == false) {
                     bumperSelector = '.bumper-lb';
@@ -84,12 +100,20 @@ $(function(){
                 }
                 if (data.fwd == true) {
                     forwardCollision()
+                    $.ajax({
+                                url : '/robot/stop',
+                                type : 'POST'
+                                });
                 }
                 if (data.fwd == false) {
                     forwardNoCollision()
                 }
                 if (data.bck == true) {
                     backCollision()
+                    $.ajax({
+                                url : '/robot/stop',
+                                type : 'POST'
+                                });
                 }
                 if (data.bck == false) {
                     backNoCollision()
@@ -100,6 +124,6 @@ $(function(){
             }
         });
         },
-        500
+        10
     )
 });
