@@ -18,7 +18,7 @@ import static java.lang.Thread.sleep;
 @Component
 public class SerialPortManager {
     Logger LOGGER = Logger.getLogger(SerialPortManager.class);
-    private String portName = "/dev/ttyACM1";
+    private String portName = "/dev/ttyACM0";
     private SerialPort serialPort;
     private SignalsDTO signalsDTO;
 
@@ -28,7 +28,7 @@ public class SerialPortManager {
     }
 
     public void connect() throws Exception {
-        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM1");
+        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
         LOGGER.info("Trying to connect to /dev/ttyACM0");
         LOGGER.info(CommPortIdentifier.getPortIdentifiers().toString());
         CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);
