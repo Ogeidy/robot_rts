@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:tiles="http://www.thymeleaf.org" xmlns:spring="http://www.springframework.org/tags" lang="ru">
 
 <head>
     <title>Robot control system</title>
@@ -33,7 +34,7 @@
             </form>
             <form id="stop" th:action="@{/stop}" method='post'>
                 <div>
-                    <button class = "btn" type="submit" name="stop">Stop</button>
+                    <button class = "btn" type="submit" name="stop"></button>
                 </div>
             </form>
             <div class="clearfix"></div>

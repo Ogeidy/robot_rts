@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rts.robot.dto.SignalsDTO;
 
-import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,16 +17,15 @@ import static java.lang.Thread.sleep;
 
 @Component
 public class SerialPortManager {
+    Logger LOGGER = Logger.getLogger(SerialPortManager.class);
+    private String portName = "/dev/ttyACM0";
+    private SerialPort serialPort;
     private SignalsDTO signalsDTO;
 
     @Autowired
     public SerialPortManager(SignalsDTO signalsDTO){
         this.signalsDTO = signalsDTO;
     }
-
-    Logger LOGGER = Logger.getLogger(SerialPortManager.class);
-    private String portName = "/dev/ttyACM0";
-    private SerialPort serialPort;
 
     public void connect() throws Exception {
         System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
@@ -62,9 +60,9 @@ public class SerialPortManager {
 
     public void write(int signal) throws IOException {
         OutputStream out = serialPort.getOutputStream();
-        LOGGER.info("Before sending");
+//        LOGGER.info("Before sending");
         out.write(signal);
-        LOGGER.info("After sending");
+//        LOGGER.info("After sending");
         out.close();
     }
 
