@@ -94,6 +94,7 @@ $(function(){
                 if (data.bck == false) {
                     backNoCollision()
                 }
+                data = null;
             },
             error : function() {
                 //console.log('Error while calling ajax');
